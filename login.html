@@ -1,0 +1,197 @@
+<?php
+require 'config.php';
+
+if (isset($_SESSION['username'])){
+    header("location: index.php");
+    exit();
+}
+
+$error = '';
+$success = '';
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // if (isset($_POST['username'])){
+    //     $username = trim($_POST['username']);
+    // }else {
+    //     $username = trim("");
+    // }
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+    
+    // Basic validation
+    if (empty($username) || empty($password)) {
+        $error = 'Please fill in your username and password';
+    }else {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $checkuser = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($checkuser){
+            if(password_verify($password, $checkuser['password'])){
+                $_SESSION['user_id'] = $checkuser['id'];
+                $_SESSION['username'] = $checkuser['username'];
+
+                header("Location: index.php");
+                exit();
+            }else{
+                $error = "Incorrect Password!!";
+            }
+        }else{
+            $error = "This user does not exist.";
+        }
+    }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - User System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="back">
+    <div class="login-container">
+    <div class="visual-section">
+        
+    </div>
+ <img  class="tes" src="images/tesla.webp" alt="tesla">
+    <!-- Right Section: Login Form -->
+    <div class="form-section">
+        <?php if (isset($error) && !empty($error)):?>
+            <p style="color:red;"><?php echo $error; ?></p>
+        <?php endif; ?>
+
+        <h2 class="log fw-bold">Log in to CarWeb</h2>
+
+        <form method="post" class="back">    
+            <input type="text" name="username" placeholder="Username" value="<?php echo $_POST['username'] ?? '';?>" required>
+            <input type="password" name="password" placeholder="Password" value="<?php echo $_POST['password']?? '' ?>" required>
+            <button type="submit" class="login-btn">Log In</button>
+            <hr>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* STABILIZER: Stops screen from shaking or shifting sideways */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    .log{
+     color:white;
+    }
+    .back{
+        background-image:url('images/back2.jpg');
+        border-radius:12px;
+    }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Changed from height to min-height to fix clipping on small devices */
+    margin: 0;
+    padding: 15px; /* Added body boundary safety spacing */
+}
+
+/* RESPONSIVE FLEXBOX CONTAINER: Automatically stacks vertically on phone viewports */
+.login-container {
+    display: flex;
+    flex-direction: column; /* Default stack option for mobile display safety */
+    background:#e67e22;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+@media(min-width: 768px) {
+    .login-container {
+        flex-direction: row; /* Returns to horizontal double column view for desktop layouts */
+        align-items: stretch;
+    }
+}
+
+/* Form Styling */
+.form-section {
+    flex: 1;
+    padding: 20px; /* Reduced mobile padding footprint */
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media(min-width: 768px) {
+    .form-section {
+        padding: 40px;
+    }
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.login-btn{
+    width: 100%;
+    background-color:#483D8B;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login-bt{
+    width: 100%;
+    background-color:#483D8B;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top:2rem;
+}
+
+.forgot-link {
+    display: block;
+    margin-top: 15px;
+    color: #0866ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* SMART STATIC SCALING IMAGE SYSTEM */
+.tes{
+    width: 100%;
+    max-width: 450px; /* Prevents stretching past its initial footprint boundary */
+    height: auto;     /* Dynamically computes proportional aspect height ratios */
+    max-height: 65vh; 
+    border-radius:5px;
+    object-fit: cover;
+}
+
+@media(min-width: 768px) {
+    .tes {
+        width: 50%; /* Balances image equally with container text inputs on desktop screens */
+        max-height: none;
+    }
+}
+
+hr { border: 0.5px solid #dddfe2; margin: 20px 0; }
+    </style>

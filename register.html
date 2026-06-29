@@ -1,0 +1,194 @@
+<?php
+require 'config.php';
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $number = $_POST ['phone'];
+    $nation = $_POST ['nationality'];
+    
+    // Basic validation
+
+    if (empty($username) || empty($email) || empty($password) || empty($number) || empty($nation)) {
+        $error = 'All fields are required';
+    } elseif (strlen($password) < 6) {
+        $error = 'Password must be at least 6 characters';
+    } else {
+            // Hash password and insert user
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, phone, nationality) VALUES (?, ?, ?, ?, ?)");
+            
+            if ($stmt->execute([$username, $email, $hashed_password, $number, $nation])) {
+                $success = 'Registration successful! You can now login.';
+            } else {
+                $error = 'Registration failed. Please try again.';
+            }
+        }
+    }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - User System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Replaced Bootstrap mt-5 margin with mobile-friendly centering utility layout rows -->
+        <div class="row justify-content-center align-items-center min-vh-100 py-4">
+            <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+                <!-- Inherited themes from your previous application layouts -->
+                <div class="card form-container-card">
+                    <div class="card-header bg-transparent border-0 pt-4">
+                        <h3 class="reg text-center">Register With CarWeb</h3>
+                    </div>
+                    <div class="card-body px-3 px-sm-4 pb-4">
+                        <?php if ($error): ?>
+                            <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if ($success): ?>
+                            <div class="alert alert-success"><?php echo $success; ?></div>
+                        <?php endif; ?>
+                        
+                        <form method="POST" action="">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            
+
+                            <div class="mb-3">
+                                <label for="nationality" class="form-label">Nationality</label>
+                                <input type="text" class="form-control" id="nationality" name="nationality" required>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button type="submit" class="register-btn mb-3">Register</button>
+                                <a href="login.php" class="login-btn">Log In</a>
+                            </div>
+                        </form>
+                        
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+/* STABILIZER: Locks viewport horizontally to kill any screen shaking or horizontal scrolls */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* STYLED BACKGROUND: Inherited identical setup matching your landing index template */
+body {
+    background-image: url('images/back2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* DARKENED FRAME CONTAINER: Rich dark tint wash paired with internal border padding styles */
+.form-container-card {
+    background-color: rgba(25, 25, 25, 0.85) !important; /* Semi-transparent dark tint for text safety */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+/* Form field label text color enhancements */
+.form-label {
+    color: white !important;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Input text values contrasted styling overrides */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #111 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.register-btn {
+    width: 100%;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+.register-btn:hover {
+    background-color: #d35400;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+.login-btn:hover {
+    background-color: #d35400;
+    color: white;
+}
+
+.reg{
+    color: #e67e22;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
