@@ -156,57 +156,7 @@ hr { border: 0.5px solid #dddfe2; margin: 20px 0; }
 </style>
 
 <!-- GITHUB PAGES AUTH ENGINE CONTROLLER -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 1. SESSION CHECKER: If user is already logged into localStorage, send them to index.html automatically
-        if (localStorage.getItem("username")) {
-            window.location.href = "index.html";
-        }
 
-        const loginForm = document.getElementById("loginForm");
-        const errorBox = document.getElementById("errorBox");
-
-        // 2. FORM INTERCEPT ENGINE: Captures user submission client-side
-        loginForm.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevents page reload requests
-            errorBox.style.display = "none";
-
-            const usernameInput = document.getElementById("username").value.trim();
-            const passwordInput = document.getElementById("password").value.trim();
-
-            // Basic Validation Check
-            if (!usernameInput || !passwordInput) {
-                errorBox.innerText = "Please fill in your username and password";
-                errorBox.style.display = "block";
-                return;
-            }
-
-            // 3. SECURE LOCAL CLIENT LOGIC VERIFICATION
-            // For testing on GitHub Pages, use 'admin' as username and 'password' as password, or change them below
-            const mockUser = {
-                username: "admin",
-                password: "password"
-            };
-
-            if (usernameInput.toLowerCase() === mockUser.username) {
-                if (passwordInput === mockUser.password) {
-                    // Save access credentials state to browser LocalStorage
-                    localStorage.setItem("user_id", "1");
-                    localStorage.setItem("username", usernameInput);
-
-                    // Redirect smoothly to your main static marketplace dashboard
-                    window.location.href = "index.html";
-                } else {
-                    errorBox.innerText = "Incorrect Password!!";
-                    errorBox.style.display = "block";
-                }
-            } else {
-                errorBox.innerText = "This user does not exist.";
-                errorBox.style.display = "block";
-            }
-        });
-    });
-</script>
 
 <script src="https://jsdelivr.net"></script>
 </body>
