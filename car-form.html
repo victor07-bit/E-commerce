@@ -18,7 +18,7 @@
         /* STYLED BACKGROUND: Inherited identical setup matching your main landing index */
         body { 
             font-family: Arial, sans-serif; 
-            background-image: url('images/back2.jpg');
+            background-image: url('back2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -170,11 +170,11 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" id="username" name="username" value="<?php echo $checkuser['username']; ?>" class="form-control" readonly>
+                    <input type="text" id="username" name="username" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" id="email" name="email" value="<?php echo $checkuser['email']; ?>" class="form-control" readonly>
+                    <input type="email" id="email" name="email" class="form-control" readonly>
                 </div>
             </div>
             
@@ -182,11 +182,11 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label>My-Model</label>
-                    <input type="text" id="mymodel" name="mymodel" value="<?php echo $_POST['mymodel'] ?? '' ?>" class="form-control" required placeholder="e.g. Toyota Camry">
+                    <input type="text" id="mymodel" name="mymodel" class="form-control" required placeholder="e.g. Toyota Camry">
                 </div>
                 <div class="form-group">
                     <label>Year</label>
-                    <input type="number" id="year" name="year" value="<?php echo $_POST['year'] ?? '' ?>" class="form-control" required placeholder="e.g. 2018">
+                    <input type="number" id="year" name="year" class="form-control" required placeholder="e.g. 2018">
                 </div>
             </div>
             
@@ -194,25 +194,25 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label>Desired Car</label>
-                    <input type="text" id="desiredmodel" name="desiredmodel" value="<?php echo $checkcars['name']; ?>" class="form-control" readonly>
+                    <input type="text" id="desiredmodel" name="desiredmodel" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" name="password" value="<?php echo $_POST['password'] ?? '' ?>" class="form-control" maxlength="15" required placeholder="Enter account password">
+                    <input type="password" id="password" name="password" class="form-control" maxlength="15" required placeholder="Enter account password">
                 </div>
                 <div class="form-group full-width">
                     <label>Additional Notes (Condition, Modifications, etc.)</label>
-                    <textarea name="notes" rows="4" placeholder="Mention any specific features or defects..." class="form-control"><?php echo $_POST['notes'] ?? '' ?></textarea>
+                    <textarea name="notes" rows="4" placeholder="Mention any specific features or defects..." class="form-control"> </textarea>
                 </div>
             </div>
             
-            <input type="hidden" name="car_id" value="<?= $_POST['car_id']; ?>">
+            <input type="hidden" name="car_id">
             <div style="margin-top: 20px;">
                 <button type="submit" class="index.html search-btn mt-2" name="submit-swap">Submit</button>
             </div>
         </div>
     </form>
-<?php endif; ?>
+
 
 <script src="bootstrap/js/bootstrap.bundle.min.js"> </script>
 </body>
