@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - User System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="back">
+    <div class="login-container">
+        <div class="visual-section"></div>
+        <img class="tes" src="tesla.webp" alt="tesla" onerror="this.src='https://placehold.co'">
+        
+        <!-- Right Section: Login Form -->
+        <div class="form-section">
+            <!-- Client-Side JavaScript Error Message Container -->
+            <p id="errorBox" style="color:red; display:none; font-weight:bold;"></p>
+
+            <h2 class="log fw-bold">Log in to CarWeb</h2>
+
+            <form id="loginForm" class="back">    
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="login-btn"><a href="index.html">Log In</a></button>
+                <hr>
+            </form>
+        </div>
+    </div>
+
+<style>
+    /* STABILIZER: Stops screen from shaking or shifting sideways */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    .log{
+     color:white;
+    }
+    .back{
+        background-image:url('back2.jpg');
+        border-radius:12px;
+    }
+body {
+    font-family: Arial, sans-serif;
+    background-image:url('back2.jpg'); /* Enhanced fallback matching your theme style */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 15px; 
+}
+
+/* RESPONSIVE FLEXBOX CONTAINER: Automatically stacks vertically on phone viewports */
+.login-container {
+    display: flex;
+    flex-direction: column; 
+    background:#e67e22;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+@media(min-width: 768px) {
+    .login-container {
+        flex-direction: row; 
+        align-items: stretch;
+    }
+}
+
+/* Form Styling */
+.form-section {
+    flex: 1;
+    padding: 20px; 
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media(min-width: 768px) {
+    .form-section {
+        padding: 40px;
+    }
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.login-btn{
+    width: 100%;
+    background-color:#483D8B;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.login-btn:hover {
+    background-color: #3b3173;
+}
+
+.login-bt{
+    width: 100%;
+    background-color:#483D8B;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top:2rem;
+}
+
+.forgot-link {
+    display: block;
+    margin-top: 15px;
+    color: #0866ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* SMART STATIC SCALING IMAGE SYSTEM */
+.tes{
+    width: 100%;
+    max-width: 450px; 
+    height: auto;     
+    max-height: 65vh; 
+    border-radius:5px;
+    object-fit: cover;
+}
+
+@media(min-width: 768px) {
+    .tes {
+        width: 50%; 
+        max-height: none;
+    }
+}
+
+hr { border: 0.5px solid #dddfe2; margin: 20px 0; }
+</style>
+
+<!-- GITHUB PAGES AUTH ENGINE CONTROLLER -->
+
+
+<script src="https://jsdelivr.net"></script>
+</body>
+</html>
