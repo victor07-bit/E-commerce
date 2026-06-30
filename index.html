@@ -13,40 +13,8 @@
 
  
 </head>
-<body class="body">
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo"><img class="logi" src="logo.webp" alt="Logo">CarSwap</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Browse Cars</a></li>
-            <li><a href="#">List My Car</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <header class="hero container">
-        <h1 class="swap fw-bold" id="welcomeMessage">Welcome Trader, Swap Your Car Today</h1>
-        <a href="chat.html" class="chat"> C-s Chat</a>
-        <p class="p fw-bold">The easiest way to trade your vehicle with others.</p>
-    </header>
-    
-    <div class="ai-container">
-        <div class="bounce1">
-            <a href="ai.html" class="ai"> Chat with C-s AI </a>
-        </div>
-    </div>
-
-    <!-- Swap Gallery -->
-    <div class="container">
-        <h2 style="color:white; padding-left: 15px;">Available for Swap <i class="fa-solid fa-arrow-right"></i></h2>   
-        
-        <!-- JavaScript loads static cards automatically inside this dynamic layout wrapper -->
-        <div class="cards-grid-container" id="carGallery"></div>
-    </div>
-        
-    <! <style>
+ <style>
         html, body {
             max-width: 100%;
             overflow-x: hidden; /* STABILIZER: Stops any viewport shaking or horizontal shifting */
@@ -274,6 +242,40 @@
         }
      </style>--
 
+    
+<body class="body">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><img class="logi" src="logo.webp" alt="Logo">CarSwap</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Browse Cars</a></li>
+            <li><a href="#">List My Car</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero container">
+        <h1 class="swap fw-bold" id="welcomeMessage">Welcome Trader, Swap Your Car Today</h1>
+        <a href="chat.html" class="chat"> C-s Chat</a>
+        <p class="p fw-bold">The easiest way to trade your vehicle with others.</p>
+    </header>
+    
+    <div class="ai-container">
+        <div class="bounce1">
+            <a href="ai.html" class="ai"> Chat with C-s AI </a>
+        </div>
+    </div>
+
+    <!-- Swap Gallery -->
+    <div class="container">
+        <h2 style="color:white; padding-left: 15px;">Available for Swap <i class="fa-solid fa-arrow-right"></i></h2>   
+        
+        <!-- JavaScript loads static cards automatically inside this dynamic layout wrapper -->
+        <div class="cards-grid-container" id="carGallery"></div>
+    </div>
+    
  <div class="car-card">
                 <img src="tesla.webp" alt="Tesla Model 3" onerror="this.src='https://placehold.co'">
                 <h3 class="text mt-2">Tesla Model 3</h3>
