@@ -91,7 +91,7 @@
         }
 
         .car-card {
-            background-image:url('images/back2.jpg');
+            background-image:url('back2.jpg');
             text:white;
             width: 100%;
             max-width: 320px;
@@ -136,7 +136,7 @@
         
         /* OPTIMIZED WEBSITE BACKGROUND SETUP */
         .body{
-            background-image:url('images/back2.jpg');
+            background-image:url('back2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -238,7 +238,7 @@
 <body class="body">
     <!-- Navbar -->
   <nav class="navbar">
-        <div class="logo"><img class="logi" src="images/logo.webp">CarSwap</div>
+        <div class="logo"><img class="logi" src="logo.webp">CarSwap</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Browse Cars</a></li>
@@ -266,23 +266,19 @@
         <div class="cards-grid-container">
             <?php while($cars = $stmt->fetch(PDO::FETCH_ASSOC)):?>
                 <div class="car-card">
-                    <img src="<?php echo $cars['img']; ?>">
-                    <h3 class="text"><?php echo $cars['name']; ?></h3>
-                    <p class="text">Location: <?php echo $cars['location'];?></p>
+                    <img src="tesla.webp">
+                    <h3> Tesla Model 3</h3>
+                    <p class="text">Location:lekki</p>
                     <div class="animation-container">
                     <p class="switch"> CAR BRAND FOR SWAP..<i class="fa-etch fa-solid fa-arrow-down"></i></p>
                      <div class="animation-box bounce">
-                    <img src="<?php echo $cars['swap_img']; ?>">
+                    <img src="sclass.avif">
                     </div>
                     </div>
-                        <h3 class="text"><?php echo $cars['swap_name']; ?></h3>
-                        
-                        <form method="post" action="car-form.php">
-                            <input type="hidden" name="car_id" value="<?php echo $cars['car_id']; ?>">
-                        <button class="swap-btn"> Request Swap</button>
+                        <h3> Great Wall Poer</h3
+                        <button class="car-form.html swap-btn"> Request Swap</button>
                         </form>
                 </div>
-            <?php endwhile; ?>
         </div>
             </div>
         
