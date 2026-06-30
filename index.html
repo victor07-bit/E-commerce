@@ -11,7 +11,42 @@
     <link rel="stylesheet" href="style.css">
 
 
-     <style>
+ 
+</head>
+<body class="body">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><img class="logi" src="logo.webp" alt="Logo">CarSwap</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Browse Cars</a></li>
+            <li><a href="#">List My Car</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero container">
+        <h1 class="swap fw-bold" id="welcomeMessage">Welcome Trader, Swap Your Car Today</h1>
+        <a href="chat.html" class="chat"> C-s Chat</a>
+        <p class="p fw-bold">The easiest way to trade your vehicle with others.</p>
+    </header>
+    
+    <div class="ai-container">
+        <div class="bounce1">
+            <a href="ai.html" class="ai"> Chat with C-s AI </a>
+        </div>
+    </div>
+
+    <!-- Swap Gallery -->
+    <div class="container">
+        <h2 style="color:white; padding-left: 15px;">Available for Swap <i class="fa-solid fa-arrow-right"></i></h2>   
+        
+        <!-- JavaScript loads static cards automatically inside this dynamic layout wrapper -->
+        <div class="cards-grid-container" id="carGallery"></div>
+    </div>
+        
+    <! <style>
         html, body {
             max-width: 100%;
             overflow-x: hidden; /* STABILIZER: Stops any viewport shaking or horizontal shifting */
@@ -91,7 +126,7 @@
 
         .car-card {
             background-image:url('back2.jpg');
-            text:white;
+            color: white;
             width: 100%;
             max-width: 320px;
             border-radius: 10px;
@@ -156,6 +191,7 @@
             gap: 20px;
             border-radius: 12px;
             padding: 15px;
+            text-align: center;
         }
         /* STABILIZED Animation Keyframes */
         @keyframes bounce {
@@ -232,71 +268,58 @@
             text-decoration:none;
             transition: transform 0.2s, background 0.2s;
         }
-    </style>
-</head>
-<body class="body">
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo"><img class="logi" src="logo.webp" alt="Logo">CarSwap</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Browse Cars</a></li>
-            <li><a href="#">List My Car</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
+        
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+     </style>--
 
-    <!-- Hero Section -->
-    <header class="hero container">
-        <h1 class="swap fw-bold" id="welcomeMessage">Welcome Trader, Swap Your Car Today</h1>
-        <a href="chat.html" class="chat"> C-s Chat</a>
-        <p class="p fw-bold">The easiest way to trade your vehicle with others.</p>
-    </header>
+ <div class="car-card">
+                <img src="tesla.webp" alt="Tesla Model 3" onerror="this.src='https://placehold.co'">
+                <h3 class="text mt-2">Tesla Model 3</h3>
+                <p class="text">Location: Lekki</p>
+                <div class="animation-container">
+                    <p class="switch"> CAR BRAND FOR SWAP.. <i class="fa-solid fa-arrow-down"></i></p>
+                    <div class="animation-box bounce">
+                        <img src="sclass.avif" alt="Great Wall Poer" style="width:100%; height:100px; object-fit:cover; border-radius:5px;">
+                        <p class="text" style="margin:5px 0 0 0; font-size:14px;">Great Wall Poer</p>
+                    </div>
+                </div>
+                <button class="swap-btn">Swap Now</button>
+            </div>
+
+            <!-- Car Card 2 -->
+            <div class="car-card">
+                <img src="car2.avif" alt="BMW X3 & iX" onerror="this.src='https://placehold.co'">
+                <h3 class="text mt-2">BMW X3 & iX</h3>
+                <p class="text">Location: lagos</p>
+                <div class="animation-container">
+                    <p class="switch"> CAR BRAND FOR SWAP.. <i class="fa-solid fa-arrow-down"></i></p>
+                    <div class="animation-box bounce">
+                        <img src="wall.webp" alt="Mercedes-Benz:s-class" style="width:100%; height:100px; object-fit:cover; border-radius:5px;">
+                        <p class="text" style="margin:5px 0 0 0; font-size:14px;">Mercedes-Benz:s-class</p>
+                    </div>
+                </div>
+                <button class="swap-btn">Swap Now</button>
+            </div>
+
+            <!-- Car Card 3 -->
+            <div class="car-card">
+                <img src="car2.webp" alt="hatchback" onerror="this.src='https://placehold.co'">
+                <h3 class="text mt-2">hatchback</h3>
+                <p class="text">Location: Port Harcourt</p>
+                <div class="animation-container">
+                    <p class="switch"> CAR BRAND FOR SWAP.. <i class="fa-solid fa-arrow-down"></i></p>
+                    <div class="animation-box bounce">
+                     <img src="wall.webp" alt="Mercedes-Benz:s-class" style="width:100%; height:100px; object-fit:cover; border-radius:5px;">
+                        <p class="text" style="margin:5px 0 0 0; font-size:14px;">Mercedes-Benz:s-class</p>
+                    </div>
+                </div>
+                <button class="swap-btn">Swap Now</button>
+            </div>
     
-    <div class="ai-container">
-        <div class="bounce1">
-            <a href="ai.html" class="ai"> Chat with C-s AI </a>
-        </div>
-    </div>
-
-    <!-- Swap Gallery -->
-    <div class="container">
-        <h2 style="color:white; padding-left: 15px;">Available for Swap <i class="fa-solid fa-arrow-right"></i></h2>   
-        
-        <!-- JavaScript loads static cards automatically inside this dynamic layout wrapper -->
-        <div class="cards-grid-container" id="carGallery"></div>
-    </div>
-        
-    <!-- Static Data Engine & Interaction Script -->
-    <script>
-        // 1. DATABASE REPLACEMENT: Add your car items manually into this array
-        // Make sure your folder contains these exact image path names!
-        const carData = [
-            {
-                car_id: 1,
-                name: "Tesla Model 3",
-                location: "Lekki",
-                img: "tesla.webp",
-                swap_name: "Great Wall Poer",
-                swap_img: "sclass.avif"
-            },
-            {
-                car_id: 2,
-                name: "BMW X3 & iX",
-                location: "lagos",
-                img: "car2.avif",
-                swap_name: "Mercedes-Benz:s-class",
-                swap_img: "wall.webp"
-            },
-            {
-                car_id: 3,
-                name: "hatchback",
-                location: "Port Harcourt",
-                img: "car2.webp",
-                swap_name: "MG-HS",
-                swap_img: "hs.webp"
-            }
-        ];
+    
+   
          {
                 car_id: 4,
                 name: "Tata Sierra",
